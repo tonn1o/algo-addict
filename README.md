@@ -4,10 +4,14 @@ The repo is created to store problem solutions from the LeetCode and keep track 
 
 ### File names structure
 ```
+difficulty {
+  e = "easy"
+  m = "medium"
+  h = "hard"
+}
+
 "<problem-name>_<difficulty>_<problem-id>.*"
 ```
-
-`difficulty`: e = "easy", m = "medium", h = "hard"  
 
 Example: `contains-duplicate_e_217.py`
 
