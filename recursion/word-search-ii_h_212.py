@@ -1,5 +1,5 @@
 
-# Non optimal solution. Working but exceeds time limit
+# Non optimal solution. Working, but exceeds the time limit
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
 
