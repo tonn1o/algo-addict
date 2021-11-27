@@ -2,7 +2,7 @@
 
 The repo is created to store problem solutions from the LeetCode and keep track of them.
 
-![LeetCode Stats](https://leetcode.card.workers.dev/?username=tonnio&style=auto&font=&extension=activity)
+![LeetCode Stats](https://leetcode.card.workers.dev/?username=tonnio&style=auto&font=&extension=null)
 
 ### File names structure
 ```
@@ -19,5 +19,5 @@ Example: `contains-duplicate_e_217.py`
 
 
 ### Links
-[Statistics](stats.md)  
+[Stats](stats.md)  
 [Useful Links](useful-links.md)
