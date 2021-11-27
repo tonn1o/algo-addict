@@ -2,6 +2,8 @@
 
 The repo is created to store problem solutions from the LeetCode and keep track of them.
 
+![LeetCode Stats](https://leetcode.card.workers.dev/?username=tonnio&style=auto&font=&extension=activity)
+
 ### File names structure
 ```
 difficulty {
