@@ -20,4 +20,5 @@ Example: `contains-duplicate_e_217.py`
 
 ### Links
 [Stats](stats.md)  
-[Useful Links](useful-links.md)
+[Useful Links](useful-links.md)  
+[Core](core.md)
