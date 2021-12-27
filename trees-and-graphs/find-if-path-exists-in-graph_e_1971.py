@@ -1,3 +1,4 @@
+# Disjoint set
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
         graph = dict()
@@ -32,3 +33,35 @@ class Solution:
             return False
 
         return find(start)
+
+# BFS
+    def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
+        graph = collections.defaultdict(set)
+        
+        for edge in edges:
+            graph[edge[0]].add(edge[1])
+            graph[edge[1]].add(edge[0])
+            
+        visited = [False] * n
+        
+        
+        def bfs(node):
+            queue = []
+            queue.append(node)
+            visited[node] = True
+        
+            while queue: 
+                node = queue.pop()
+                
+                if  node == end:
+                    return True
+                
+                for childNode in graph[node]:
+                    if visited[childNode] == False:
+                        visited[childNode] = True
+                        queue.append(childNode)
+                        
+                            
+            return False
+        
+        return bfs(start)
