@@ -5,7 +5,7 @@
 function debounce(func, wait) {
     let timeout = null;
 
-    return function debounced(...args) {
+    return function(...args) {
         if (timeout) {
             clearTimeout(timeout);
         }
