@@ -13,4 +13,4 @@ function sum(num) {
         return base;
     };
     return func;
-}
+}z
