@@ -32,11 +32,11 @@ class Solution:
             else: 
                 return 0
         
-        def getAdjucentFreshOranges(row, col):
+        def getAdjacentFreshOranges(row, col):
             freshOranges = set()
-            neighbords = {(-1, 0), (0, 1), (1, 0), (0, -1)}
+            neighbors = {(-1, 0), (0, 1), (1, 0), (0, -1)}
             
-            for n in neighbords:
+            for n in neighbors:
                 nRow = row + n[0]
                 nCol = col + n[1]
                 
@@ -51,7 +51,7 @@ class Solution:
         while queue:
             cell = queue.popleft()
             
-            for orangeCell in getAdjucentFreshOranges(cell[0], cell[1]):
+            for orangeCell in getAdjacentFreshOranges(cell[0], cell[1]):
                 minutes = cell[2] + 1
                 freshOrangesCount -= 1
                 grid[orangeCell[0]][orangeCell[1]] = 2
