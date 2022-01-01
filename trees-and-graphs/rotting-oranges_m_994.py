@@ -16,8 +16,6 @@ class Solution:
         queue = collections.deque()
         
         #find all initial rotten oranges
-        
-        
         for i in range(m):
             for j in range(n):
                 val = grid[i][j]
@@ -33,7 +31,6 @@ class Solution:
                 return -1
             else: 
                 return 0
-            
         
         def getAdjucentFreshOranges(row, col):
             freshOranges = set()
