@@ -30,10 +30,10 @@ for (const testCase of testCases) {
 
     if (!isValid) {
         throw new Error(`
-      Input: ${testCase.input}\n
-      Expected: ${JSON.stringify(testCase.expect)}\n 
-      Actual Output: ${JSON.stringify(res)}
-    `);
+          Input: ${testCase.input}\n
+          Expected: ${JSON.stringify(testCase.expect)}\n 
+          Actual Output: ${JSON.stringify(res)}
+        `);
     }
 }
 
