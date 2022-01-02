@@ -21,3 +21,34 @@ class Solution:
 
         return traverseInOrder(root)
 
+
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        def inOrderRecursive(node):
+            if not node:
+                return []
+            
+            left = inOrderRecursive(node.left)
+            right = inOrderRecursive(node.right)
+            root = [node.val]
+            
+            return left + root + right
+        
+        def inOrderIterative(root):
+            current = root
+            res = []
+            stack = []
+            
+            while current or stack:
+                while current:
+                    stack.append(current)
+                    current = current.left
+                    
+                current = stack.pop()
+                res.append(current.val)
+                current = current.right
+                
+            return res
+        return inOrderIterative(root)
+                    
