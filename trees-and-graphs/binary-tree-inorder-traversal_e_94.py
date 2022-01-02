@@ -46,8 +46,9 @@ class Solution:
                     current = current.left
                     
                 current = stack.pop()
-                res.append(current.val)
-                current = current.right
+                
+                if current.right:
+                  current = current.right
                 
             return res
         return inOrderIterative(root)
