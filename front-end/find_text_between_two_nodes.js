@@ -56,6 +56,8 @@ The output should be:
 ["On this Page", "Jump to section", "Properties", "Methods", "Examples", "Specifications", "Browser compatibility", "Related topics", "text that should be included"]
 */
 
+
+// DFS 
 function getTextBetweenTwoNodes(node1, node2) {
     const res = []
 
@@ -94,4 +96,34 @@ function getTextBetweenTwoNodes(node1, node2) {
     }
 
     return res;
+}
+
+// Range API + NodeIterator
+function getTextBetweenTwoNodesV2(node1, node2) {
+    const range = new Range();
+
+    range.setStart(node1, 0);
+    range.setEnd(node2, 1);
+
+    const nodeIterator = document.createNodeIterator(range.commonAncestorContainer, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+            return range.intersectsNode(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+    });
+
+    const result = [];
+    
+    let currentNode = nodeIterator.nextNode();
+
+    while (currentNode) {
+        const text = currentNode.nodeValue.trim();
+
+        if (text) {
+            result.push(text);
+        }
+
+        currentNode = nodeIterator.nextNode();
+    }
+    
+    return result;
 }
