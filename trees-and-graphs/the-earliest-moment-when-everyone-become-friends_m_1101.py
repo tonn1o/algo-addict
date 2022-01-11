@@ -23,7 +23,7 @@ class Solution:
             if rootX != rootY:
                 root[rootX] = rootY
 
-        def allConntected():
+        def allConnected():
             mainRoot = find(root[0])
 
             for i in range (1, n):
@@ -36,7 +36,7 @@ class Solution:
         for log in sortedLogs:
             union(log[1], log[2])
 
-            if allConntected():
+            if allConnected():
                 return log[0]
 
         return -1
