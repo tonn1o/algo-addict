@@ -14,10 +14,9 @@ function shuffle(arr) {
 }
 
 const check = {};
-const input = [1, 2, 3];
 
 for (let i = 0; i < 100000; i++) {
-    const res = shuffle(input).join('');
+    const res = shuffle([1, 2, 3]).join('');
     check[res] = check[res] ? check[res] + 1 : 1;
 }
 
