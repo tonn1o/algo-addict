@@ -1,16 +1,19 @@
-// ref: https://javascript.info/currying-partials
-
 /**
  * @param { (...args: any[]) => any } fn
  * @returns { (...args: any[]) => any }
  */
 function curry(fn) {
-    return function internal(...args) {
+    return function curryInner(...args) {
         if (args.length >= fn.length) {
-            return fn(...args);
+            return fn.apply(this, [...args]);
+        } else {
+            return (...newArgs) => curryInner.apply(this, newArgs.concat(args));
         }
-
-        return (...args2) => internal(...args.concat(args2));
-    };
+    }
 }
 
+
+function sum3(a, b, c){
+    return a + b + c
+};
+const curried = curry(sum3);
