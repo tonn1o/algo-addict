@@ -3,7 +3,11 @@ Write a function that takes a DOM element and smoothly animates it from its curr
 right over duration milliseconds. Implement the following function, animate(el, milliseconds, distance)
 */
 
-
+/**
+* @param {HTMLElement} el
+* @param {number} ms
+* @param {number} distance (px)
+ * */
 function animate(el, ms, distance) {
     // current distance should be saved to a data-attr in case animate will be run multiple times for the same element
     // if no distance specified, then initialize it to 0
