@@ -10,9 +10,8 @@ function animate(el, ms, distance) {
     const currentDistance = el.dataset.distance ? +el.dataset.distance : 0;
     const newDistance = currentDistance + distance;
 
-    // save new distance to data-attr
+    // save new distance to a data-attr
     el.dataset.distance = newDistance;
-
     // add transition for the transform (to make it smooth) and specify length of the transition
     el.style.transition = `transform ${ms}ms`;
     // do transition via translateX for a better performance
