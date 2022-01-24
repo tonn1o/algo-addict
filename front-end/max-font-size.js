@@ -7,10 +7,10 @@ domNode such that the textString will fit inside domNode without overflowing (i.
 /*
     Solution:
 
-    The idea behind this solution is that font-size increases proportionally.
+    The idea behind this solution is that text width increases proportionally to font-size.
     So if we know text width with font-size 1px, we can easily calculate the rest.
     E.g. String "test" with `font-size: 1px` has width 3px. If the same string would have text size 10px, the text width would be = 3px * 10px = 30px;
-    maxFontSize = containerWidth / 1pxStringWidth
+    maxFontSize = containerWidth / 1pxTextWidth
 */
 
 
