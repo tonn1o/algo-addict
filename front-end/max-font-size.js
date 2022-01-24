@@ -25,7 +25,7 @@ function getMaxFontSize(textString, domNode) {
 
     document.body.append(textElem);
 
-    // getBoundingClientRect is used for a purpose of accurancy, since it return width with decimals
+    // getBoundingClientRect is used for a purpose of accuracy, since it return width with decimals
     const fontSizeMultiplier = textElem.getBoundingClientRect().width;
 
     textElem.remove();
