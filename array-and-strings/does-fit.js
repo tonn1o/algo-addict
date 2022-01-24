@@ -14,7 +14,7 @@ function doesFit(textString, fontSize, domNode) {
     textElem.innerText = textString;
     textElem.style.fontSize = fontSize + 'px';
     textElem.style.visibility = 'hidden';
-    textElem.style.position = 'absolute'; // prevent interupting element's flow
+    textElem.style.position = 'absolute'; // prevent element's flow interrupting
 
     domNode.prepend(textElem);
 
