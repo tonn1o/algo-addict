@@ -1,5 +1,12 @@
 // https://bigfrontend.dev/problem/find-the-single-integer
 
+/*
+* We have an array of integers, all integers appear twice except one integer.
+* Write a function findUnique(arr), which return this unique integer.
+* Input: [1, 1, 2, 2, 3, 3, 4]
+* Output: 4
+* */
+
 /**
  * @param {number[]} arr
  * @returns number

@@ -1,5 +1,9 @@
-// Write a functunion that will flatte multi-dimentional array
-// Example: [1, [2, 3], [[4]]] should return [1, 2, 3, 4].
+/*
+* Write a function `flattenArr(arr)` that will flatten multidimensional array
+*
+* Input: [1, [2, 3], [[4]]]
+* Output: [1, 2, 3, 4]
+* */
 
 function flattenArr(arr = []) {
     let res = []

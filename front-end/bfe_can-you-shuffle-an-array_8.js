@@ -13,6 +13,7 @@ function shuffle(arr) {
     return array;
 }
 
+// Probability test
 const check = {};
 
 for (let i = 0; i < 100000; i++) {
