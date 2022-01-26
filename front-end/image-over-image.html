@@ -1,0 +1,45 @@
+<!--
+    Given a large image and a small image how would you position the small image over the large image on hover.
+    Also each of the images should go to different URLs.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <a href="https://www.google.com" class="big-img">
+        <img src="https://picsum.photos/200/300">
+    </a>
+    <a href="https://www.yandex.ru" class="small-img">
+        <img src="https://picsum.photos/50/50">
+    </a>
+</div>
+
+    <style>
+        .wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .small-img {
+            right: 0;
+            top: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: 1;
+            transition: opacity .3s;
+        }
+
+        .wrapper:hover .small-img {
+            opacity: 1;
+        }
+
+    </style>
+</body>
+</html>

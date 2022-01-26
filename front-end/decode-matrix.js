@@ -10,12 +10,12 @@ const input = [
 ];
 
 function decode(input) {
-    const maxRow = input.length - 1; // 1
-    const maxColumn = input[0].length - 1; // 2
-    const res = [];// 1, 5
+    const maxRow = input.length - 1;
+    const maxColumn = input[0].length - 1;
+    const res = [];
 
     let direction = 'bottom';
-    let col = 0 // 2, 0
+    let col = 0;
     let row = 0;
 
     while (col <= maxColumn) {
