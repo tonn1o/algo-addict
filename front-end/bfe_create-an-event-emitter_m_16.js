@@ -1,40 +1,29 @@
-class EventEmitter {
-    _subscriptions = new Map()
+class Emitter {
+    events = new Map();
 
-    subscribe(event, cb) {
-        const sub = new Subscription(event, cb);
-        const eventSubs = this._subscriptions.get(event) || [];
+    subscribe(eventName, cb) {
+        if (this.events.has(eventName)) {
+            this.events.get(eventName).add(cb);
+        } else {
+            this.events.set(eventName, new Set([cb]));
+        }
 
-        this._subscriptions.set(event, [...eventSubs, sub]);
+        return {
+            release: () => {
+                this.events.get(eventName).delete(cb);
 
-        return new Subscribed(this._subscriptions, sub);
+                if (this.events.get(eventName).size === 0) {
+                    this.events.delete(eventName);
+                }
+            }
+        }
     }
 
-    emit(event, ...data) {
-        const eventSubscribers = this._subscriptions.get(event);
-
-        if (eventSubscribers && eventSubscribers.length) {
-            eventSubscribers.forEach((sub) => sub.cb(...data));
+    emit(eventName, ...args) {
+        if (this.events.has(eventName)) {
+            this.events.get(eventName).forEach(cb => cb(...args));
         }
     }
 }
 
-class Subscription {
-    constructor(event, cb) {
-        this.event = event;
-        this.cb = cb;
-    }
-}
-
-class Subscribed {
-    constructor(subscriptions, sub) {
-        this._subscirptions = subscriptions;
-        this._sub = sub
-    }
-
-    release() {
-        const eventSubs = this._subscirptions.get(this._sub.event);
-        const subIdx = eventSubs.indexOf(this._sub);
-        eventSubs.splice(subIdx, 1);
-    }
-}
+const emitter = new Emitter();

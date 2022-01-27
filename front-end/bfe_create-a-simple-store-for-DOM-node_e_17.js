@@ -1,3 +1,7 @@
+/*
+* You are asked to implement a Node Store, which supports DOM element as key.
+* */
+
 class NodeStore {
     data = {}
 

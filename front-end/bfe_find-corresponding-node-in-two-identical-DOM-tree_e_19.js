@@ -1,8 +1,34 @@
+/*
+* Given two same DOM tree A, B, and an Element a in A, find the corresponding Element b in B.
+*
+* Tree A:
+* <div>
+*   <div></div>
+*    <div>
+*        <div>
+*            <div></div> <!-- Node A -->
+*        </div>
+*   </div>
+* </div>
+*
+*
+* Tree B:
+* <div>
+*   <div></div>
+*    <div>
+*        <div>
+*            <div></div> <!-- Node B -->
+*        </div>
+*   </div>
+* </div>
+* */
+
+
 
 /**
  * @param {HTMLElement} rootA
  * @param {HTMLElement} rootB - rootA and rootB are clone of each other
- * @param {HTMLElement} nodeA
+ * @param {HTMLElement} target
  */
 const findCorrespondingNode = (rootA, rootB, target) => {
     function getPath() {
