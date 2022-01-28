@@ -2,15 +2,7 @@
  * @param {number} num
  */
 function sum(num) {
-    let base = num;
-
-    function func(n) {
-        base += n
-        return func
-    };
-
-    func.valueOf = () => {
-        return base;
-    };
+    const func = (num2) => sum(num + num2);
+    func.valueOf = () => num;
     return func;
-}z
+}
