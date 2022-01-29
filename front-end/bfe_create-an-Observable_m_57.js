@@ -1,78 +1,61 @@
 class Observable {
-    subscribers = new Set();
-    onSubscribe = null;
+    setup = null;
 
-    constructor(setup) {
-        this.onSubscribe = (newSubscriber) => setup({
-            next: (val) => this._next(val, newSubscriber),
-            error: (val) => this._error(val, newSubscriber),
-            complete: () => this._complete(newSubscriber),
-        });
+    constructor(source) {
+        this.source = source;
     }
 
-    subscribe(subscriber) {
-        this.subscribers.add(subscriber);
-        this.onSubscribe(subscriber);
-
-        return {
-            unsubscribe: this._createUnsubscribe(subscriber)
-        };
-    }
-
-    _createUnsubscribe(subscriber) {
-        return () => this.subscribers.delete(subscriber);
-    }
-
-    _next(val, subscriber) {
-        if (!this.subscribers.has(subscriber)) {
-            return;
-        }
-
-        if (subscriber.hasOwnProperty('next')) {
-            subscriber.next(val);
-        } else if (typeof subscriber === 'function') {
-            subscriber(val);
-        }
-    }
-
-    _error(val, subscriber) {
-        if (!this.subscribers.has(subscriber)) {
-            return;
-        }
-
-        if (subscriber.hasOwnProperty('error')) {
-            subscriber.error(val);
-        }
-
-        this.subscribers.delete(subscriber);
-    }
-
-    _complete(subscriber) {
-        if (!this.subscribers.has(subscriber)) {
-            return;
-        }
-
-        if (subscriber.hasOwnProperty('complete')) {
-            subscriber.complete();
-        }
-
-        this.subscribers.delete(subscriber);
+    subscribe(destination) {
+        const subscriber = new Subscriber(destination);
+        return new Subscription(subscriber, this.source);
     }
 }
 
+class Subscription {
+    isSubscribed = true;
+    _subscriber = null;
 
-// TEST
-const obs = new Observable((subscriber) => {
-    subscriber.next(1);
-    subscriber.next(2);
-    subscriber.next(3);
-    // subscriber.complete();
-
-    setTimeout(() => subscriber.next(4), 1000)
-});
-
-const sub = obs.subscribe({
-    next: val => {
-        console.log(val)
+    constructor(
+        subscriber,
+        source,
+    ) {
+        this._subscriber = subscriber;
+        source(subscriber);
     }
-});
+
+    unsubscribe() {
+        this._subscriber.isActive = false;
+        this.isSubscribed = false;
+    }
+}
+
+class Subscriber {
+    isActive = true;
+    destination = null;
+
+    constructor(destination) {
+        this.destination = typeof destination === "function"
+            ? { next: destination }
+            : destination;
+    }
+
+    next(val) {
+        if (this.isActive && this.destination.next) {
+            this.destination.next(val);
+        }
+    }
+
+    error(val) {
+        if (this.isActive && this.destination.error) {
+            this.isActive = false;
+            this.destination.error(val);
+        }
+    }
+
+    complete() {
+        if (this.isActive && this.destination.complete) {
+            this.isActive = false;
+            this.destination.complete();
+        }
+    }
+}
