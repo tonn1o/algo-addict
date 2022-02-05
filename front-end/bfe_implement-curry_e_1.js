@@ -11,9 +11,3 @@ function curry(fn) {
         }
     }
 }
-
-
-function sum3(a, b, c){
-    return a + b + c
-};
-const curried = curry(sum3);

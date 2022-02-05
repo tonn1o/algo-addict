@@ -6,7 +6,7 @@
 *   <div></div>
 *    <div>
 *        <div>
-*            <div></div> <!-- Node A -->
+*            <div></div> <!-- Node A; Target -->
 *        </div>
 *   </div>
 * </div>
